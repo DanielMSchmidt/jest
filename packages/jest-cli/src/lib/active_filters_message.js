@@ -13,7 +13,7 @@ const activeFilters = (
   globalConfig: GlobalConfig,
   delimiter: string = '\n',
 ) => {
-  const {testNamePattern, testPathPattern} = globalConfig;
+  const {testNamePattern, testPathPattern, projectNamePattern} = globalConfig;
   if (testNamePattern || testPathPattern) {
     const filters = [
       testPathPattern
@@ -21,6 +21,10 @@ const activeFilters = (
         : null,
       testNamePattern
         ? chalk.dim('test name ') + chalk.yellow('/' + testNamePattern + '/')
+        : null,
+      projectNamePattern
+        ? chalk.dim('project name ') +
+          chalk.yellow('/' + projectNamePattern + '/')
         : null,
     ]
       .filter(f => f)

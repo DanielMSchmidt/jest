@@ -213,6 +213,7 @@ export type GlobalConfig = {|
   testFailureExitCode: number,
   testNamePattern: string,
   testPathPattern: string,
+  projectNamePattern: string,
   testResultsProcessor: ?string,
   updateSnapshot: SnapshotUpdateState,
   useStderr: boolean,

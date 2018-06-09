@@ -147,6 +147,10 @@ export default class SearchSource {
     return this._getAllTestPaths(testPathPattern);
   }
 
+  findTestsForMatchingProjects(projectNamePattern: string): SearchResult {
+    return null;
+  }
+
   findRelatedTests(
     allPaths: Set<Path>,
     collectCoverage: boolean,
@@ -239,6 +243,10 @@ export default class SearchSource {
     } else if (globalConfig.testPathPattern != null) {
       return Promise.resolve(
         this.findMatchingTests(globalConfig.testPathPattern),
+      );
+    } else if (globalConfig.projectNamePattern != null) {
+      return Promise.resolve(
+        this.findTestsForMatchingProjects(globalConfig.projectNamePattern),
       );
     } else {
       return Promise.resolve({tests: []});

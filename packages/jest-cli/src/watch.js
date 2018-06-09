@@ -30,6 +30,7 @@ import {CLEAR} from './constants';
 import {KEYS, JestHook} from 'jest-watcher';
 import TestPathPatternPlugin from './plugins/test_path_pattern';
 import TestNamePatternPlugin from './plugins/test_name_pattern';
+import ProjectNamePatternPlugin from './plugins/project_name_pattern';
 import UpdateSnapshotsPlugin from './plugins/update_snapshots';
 import UpdateSnapshotsInteractivePlugin from './plugins/update_snapshots_interactive';
 import QuitPlugin from './plugins/quit';
@@ -44,6 +45,7 @@ let hasExitListener = false;
 const INTERNAL_PLUGINS = [
   TestPathPatternPlugin,
   TestNamePatternPlugin,
+  ProjectNamePatternPlugin,
   UpdateSnapshotsPlugin,
   UpdateSnapshotsInteractivePlugin,
   QuitPlugin,
@@ -69,11 +71,13 @@ export default function watch(
 
   const updateConfigAndRun = ({
     mode,
+    projectNamePattern,
     testNamePattern,
     testPathPattern,
     updateSnapshot,
   }: {
     mode?: 'watch' | 'watchAll',
+    projectNamePattern?: string,
     testNamePattern?: string,
     testPathPattern?: string,
     updateSnapshot?: SnapshotUpdateState,

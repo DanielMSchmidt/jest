@@ -10,6 +10,7 @@
 import type {GlobalConfig, SnapshotUpdateState} from 'types/Config';
 
 type Options = {
+  projectNamePattern?: string,
   testNamePattern?: string,
   testPathPattern?: string,
   noSCM?: boolean,
@@ -45,6 +46,10 @@ export default (globalConfig: GlobalConfig, options: Options): GlobalConfig => {
 
   if ('testNamePattern' in options) {
     newConfig.testNamePattern = options.testNamePattern || '';
+  }
+
+  if ('projectNamePattern' in options) {
+    newConfig.projectNamePattern = options.projectNamePattern || '';
   }
 
   newConfig.onlyChanged = false;
